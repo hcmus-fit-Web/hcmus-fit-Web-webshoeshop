@@ -44,7 +44,7 @@ app.use(function (req,res,next){
 
 })
 
-app.use('/', indexRouter);
+app.use('/home', indexRouter);
 app.use('/', loginRouter);
 app.use('/users', usersRouter);
 app.use('/checkout', loggedInUserGuard ,checkoutRouter);
