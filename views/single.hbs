@@ -1,0 +1,221 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li class="active">PRODUCT DETAIL</li>
+        </ol>
+    </div>
+</div>
+<div class="showcase-grid">
+    {{#with product}}
+    <div class="container shop-item">
+
+        <div class="col-md-8 showcase">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li data-thumb="{{image1}}">
+                        <div class="thumb-image"> <img src="{{image1}}" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="./images/show1.jpg">
+                        <div class="thumb-image"> <img src="{{image2}}" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="./images/show2.jpg">
+                        <div class="thumb-image"> <img src="{{image3}}" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                    <li data-thumb="./images/show3.jpg">
+                        <div class="thumb-image"> <img src="{{image4}}" data-imagezoom="true" class="img-responsive"> </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-4 showcase">
+            <div class="showcase-rt-top">
+                <div class="pull-left shoe-name">
+                    <p class="shop-item-id" hidden="hidden">{{_id}}</p>
+                    <h3 class="shop-item-title">{{name}}</h3>
+                    <p>{{type}}</p>
+                    <h4 class="shop-item-price">{{price}}</h4>
+                    <p hidden="hidden" class="shop-item-image">{{image}}</p>
+                </div>
+                <div class="pull-left rating-stars">
+                    <ul>
+                        <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+                        <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+                        <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-star star-stn" aria-hidden="true"></span></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="shocase-rt-bot">
+                <ul>
+                    <li class="ad-2-crt simpleCart_shelfItem">
+                        <a class="btn item_add" href="/addToCart/{{_id}}"  role="button">Add To Cart</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="showcase-last">
+                <h3>product details</h3>
+                <ul>
+                    <li>{{detail}}</li>
+                </ul>
+            </div>
+            <div class="showcase-last">
+                <h3>Comments</h3>
+<!--        /single/{{this._id}}/comments-->
+                <form id="comment-form" method="post" action="#">
+                    <input type="hidden" name="product.id" value="{{this._id}}" id="product-id">
+                    <input type="text" id ="comment-content" name="content" style="height: 45px; width: 110%" placeholder="Place your comment here">
+                    <div style="height: 5px; width:40%; margin-top: 2%; margin-left: 70%">
+                        <input type="submit" class="btn" value="Comment">
+                    </div>
+                </form>
+
+        <br>
+            <br>
+            <br>
+            {{/with}}
+            <hr class="featurette-divider">
+
+            <div id="comment">
+                    <ul id ="comment-list">
+                        {{#each comment}}
+                            <li class = "comment-element" hidden>
+                                <div class="comment-content">
+                                    <p>{{content}}</p>
+                                </div>
+                                <div class="comment-info">
+                                    <p>{{userId}}</p>
+                                    <p>{{createdAt}}</p>
+                                </div>
+                            </li>
+                            <hr style="width:50%;text-align:left;margin-left:0">
+                        {{/each}}
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <button class="page-item" value="1" onclick="buttonClicked(1)"> 1 </button>
+                                <button class="page-item" value="2" onclick="buttonClicked(2)"> 2 </button>
+                                <button class="page-item" value="3" onclick="buttonClicked(3)"> 3 </button>
+                                <!--<li class="page-item"><a class="page-link" href="/single/{{product._id}}/comments?page=1">1</a></button>
+                                <li class="page-item"><a class="page-link" href="/single/{{product._id}}/comments?page=2">2</a></li>
+                                <li class="page-item"><a class="page-link" href="/single/{{product._id}}/comments?page=3">3</a></li>-->
+                            </ul>
+                        </nav>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <script>
+        var commentArrays = document.querySelectorAll('.comment-element');
+        var a = commentArrays.length;
+        var d = (a-a%3)/3;
+        function buttonClicked(num){
+            // for(let i = (num-1)*d; i < commentArrays.length; i++){
+            //     commentArrays[i].setAttribute("show");
+            // }
+            for(let i = (num-1)*d; i < commentArrays.length; i++){
+
+                if(i==d*num){
+                    break;
+                }
+                else{
+                    commentArrays[i].removeAttribute("hidden");
+                }
+            }
+        }
+        function initShowComment(){
+
+            for(let i = 0; i < commentArrays.length; i++){
+
+                if(i==d){
+                    break;
+                }
+                else{
+                    commentArrays[i].removeAttribute("hidden");
+                }
+            }
+        }
+        initShowComment();
+    </script>
+
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+
+<div class="specifications">
+    <div class="container">
+        <h3>Item Details</h3>
+        <div class="detai-tabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-pills tab-nike" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Highlights</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Description</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Terms & conditiona</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for smoother transitions through footstrike.</p>
+                    <p>Dynamic Flywire cables integrate with the laces and wrap your midfoot for a truly adaptive, supportive fit.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <p>Nike is one of the leading manufacturer and supplier of sports equipment, footwear and apparels. Nike is a global brand and it continuously creates products using high technology and design innovation. Nike has a vast collection of sports shoes for men at Snapdeal. You can explore our range of basketball shoes, football shoes, cricket shoes, tennis shoes, running shoes, daily shoes or lifestyle shoes. Take your pick from an array of sports shoes in vibrant colours like red, yellow, green, blue, brown, black, grey, olive, pink, beige and white. Designed for top performance, these shoes match the way you play or run. Available in materials like leather, canvas, suede leather, faux leather, mesh etc, these shoes are lightweight, comfortable, sturdy and extremely sporty. The sole of all Nike shoes is designed to provide an increased amount of comfort and the material is good enough to provide an improved fit. These shoes are easy to maintain and last for a really long time given to their durability. Buy Nike shoes for men online with us at some unbelievable discounts and great prices. So get faster and run farther with your Nike shoes and track how hard you can play.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    The images represent actual product though color of the image and product may slightly differ.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="you-might-like">
+    <div class="container">
+        <h3 class="you-might">Products You May Like</h3>
+        {{#each productRelated}}
+            <div class="col-md-4 grid-stn simpleCart_shelfItem">
+                <!-- normal -->
+
+                <div class="ih-item square effect3 bottom_to_top">
+                    <div class="bottom-2-top">
+                        <div class="img"><img src="{{image}}" alt="/" class="img-responsive gri-wid"></div>
+                        <div class="info">
+                            <div class="pull-left styl-hdn">
+                                <h3>{{productid}}</h3>
+                            </div>
+                            <div class="pull-right styl-price">
+                                <p><a  href="/checkout" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">{{price}}</span></a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div></div>
+                </div>
+                <!-- end normal -->
+                <!-- end normal -->
+                <div class="quick-view">
+                    <a href="/single/{{this._id}}">Quick view</a>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        <div class="clearfix"></div>
+</div>
+
+<script id="comment-template" type="text/x-handlebars">
+
+    <li>
+        <div class="comment-content">
+            <p>\{{content}}</p>
+        </div>
+        <div class="comment-info">
+            <p>\{{_id}}</p>
+            <p>\{{createdAt}}</p>
+        </div>
+    </li>
+    <hr style="width:50%;text-align:left;margin-left:0">
+    
+</script>

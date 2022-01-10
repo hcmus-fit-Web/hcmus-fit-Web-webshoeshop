@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row gutters">
+        <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h2 class="mb-2 text"; style="text-align: center; margin-bottom: 20px">Forget Password</h2>
+                        </div>
+                        <div class="panel-body">
+                            {{#with user}}
+                            <form action="/forgetpass/reset/{{this._id}}" method="post" autocomplete="off">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email" value="{{this.username}}" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="text" class="form-control" name="newpass" value="" placeholder="New Password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" style="margin-left: 480px;color:white;background-color: #A5E126 " class="btn">
+                                        Submit
+                                    </button>
+                                    <a href="/" class="btn btn-default">
+                                        Cancel
+                                    </a>
+                                </div>
+                            </form>
+                            {{/with}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

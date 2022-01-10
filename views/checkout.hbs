@@ -1,0 +1,63 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li class="active">CART</li>
+        </ol>
+    </div>
+</div>
+<!-- check-out -->
+<div class="check">
+    <div class="container">
+        <div class="col-md-3 cart-total">
+            <a class="continue" href="/products">Continue to basket</a>
+
+            <hr class="featurette-divider">
+            <ul class="total_price">
+                <li class="last_price"> <h4>TOTAL</h4></li>
+                <li class="cart-total-price"><span class="last_price">$6150</span></li>
+                <div class="clearfix"> </div>
+            </ul>
+            <div class="clearfix"></div>
+            <a class="order" href="#">Place Order</a>
+        </div>
+
+    <div class="col-md-9 cart-items">
+        <h1>My Shopping Bag (<span class="simpleCart_quantity1">0</span>)</h1>
+        </script>
+
+        {{#each products}}
+
+            <form method="post" action="/removeAProduct/{{this._id}}" >
+                <input type="hidden" name="product.id" value="{{this._id}}" id="product-id">
+                <div class="cart-header">
+
+                    <button  class="close1 glyphicon glyphicon-remove" aria-hidden="true" value="remove" type="submit"><span></span></button>
+            </form>
+
+
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item cyc">
+                    <img src="{{this.image}}" class="img-responsive" alt=""/>
+                </div>
+                <div class="cart-item-info">
+                    <ul class="qty">
+                        <li>Qty :<input class="cart-quantity-input" type="number" value="1"></li>
+                        <li>Price each :<p class="cart-price cart-column">{{this.price}}</p></li>
+                    </ul>
+                    <div class="delivery">
+                        <p>Name :{{ this.name}}</p>
+                        <span>{{productid}}</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="clearfix"> </div>
+</div>
+
+</div>

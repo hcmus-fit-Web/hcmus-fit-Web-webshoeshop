@@ -1,0 +1,42 @@
+<div class="head-bread">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">INFORMATION</li>
+        </ol>
+    </div>
+</div>
+<!-- reg-form -->
+<div class="reg-form">
+    <div class="container">
+        <div class="reg">
+            <h3>Your Information</h3>
+            {{#if user}}
+                <ul>
+                    <li class="text-success h3">First Name: {{user.firstname}} </li>
+                </ul>
+                <ul>
+                    <li class="text-success h3">Last Name: {{user.lastname}}</li>
+                </ul>
+                <ul>
+                    <li class="text-success h3">Email and Username: {{user.username}}</li>
+                </ul>
+                <ul>
+                    <li class="text-success h3">Mobile Number: {{user.phone}}</li>
+                </ul>
+                <ul>
+                    <a class="btn" style="color:white;background-color: #A5E126" href="/updateinfo{{user.id}}" >
+                        <i class="fa fa-refresh"></i>
+                        Update
+                    </a>
+                    <a class="btn" style="color:white;background-color: #A5E126" href="/changepass" >
+                        <i class="fa fa-refresh"></i>
+                        Change Password
+                    </a>
+                </ul>
+            {{/if}}
+        </div>
+
+    </div>
+</div>
+
